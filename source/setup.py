@@ -1,5 +1,5 @@
 import labels
-import helpers
+import commands
 from tkinter import *
 
 # configurando editor
@@ -8,22 +8,12 @@ text = Text(root)
 text.grid()
 
 # adicioanndo seletor para alterar fonte
-font = Menubutton(root, text=labels.FONT_LABEL)
-font.grid()
-font.menu = Menu(font, tearoff=0)
-font["menu"] = font.menu
-
-# inserindo opções no seletor de fonte
-courier = IntVar()
-helvetica = IntVar()
-configuration = helpers.EditorConigurator(text)
-font.menu.add_checkbutton(label="Courier", variable=courier, command=configuration.fontCourier)
-font.menu.add_checkbutton(label="Helvetica", variable=helvetica, command=configuration.fontHelvetica)
+command_font = commands.ChangeFontCommand(root, text)
+command_font.configure()
 
 # adicionando botão "Save As" na interface
-command_save = helpers.DocumentSaveAs(text)
-button = Button(root, text=labels.SAVEAS_LABEL, command=command_save.save)
-button.grid()
+command_save = commands.SaveCommand(root, text)
+command_save.configure()
 
 # executando editor
 root.mainloop()
