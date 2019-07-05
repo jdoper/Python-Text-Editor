@@ -13,3 +13,15 @@ class DocumentSaveAs:
         file1 = open(savelocation, "w+")
         file1.write(text_editor)
         file1.close()
+
+class EditorConigurator:
+    def __init__(self, text):
+        self.text = text
+    
+    # ação para alterar fonte do editor
+    def fontCourier(self):
+        self.text.config(font="Courier")
+
+    # ação para alterar fonte do editor
+    def fontHelvetica(self):
+        self.text.config(font="Helvetica")
