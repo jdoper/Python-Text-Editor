@@ -1,8 +1,9 @@
-from tkinter import *
 import tkinter.filedialog as fileDialog
+import labels
+from tkinter import *
 
 # configurando editor
-root = Tk("Editor de Texto")
+root = Tk(labels.APP_NAME)
 text = Text(root)
 text.grid()
 
@@ -26,7 +27,7 @@ def fontHelvetica():
     text.config(font="Helvetica")
 
 # adicioanndo seletor para alterar fonte
-font = Menubutton(root, text="Fonte")
+font = Menubutton(root, text=labels.FONT_LABEL)
 font.grid()
 font.menu = Menu(font, tearoff=0)
 font["menu"] = font.menu
@@ -38,7 +39,7 @@ font.menu.add_checkbutton(label="Courier", variable=courier, command=fontCourier
 font.menu.add_checkbutton(label="Helvetica", variable=helvetica, command=fontHelvetica)
 
 # adicionando botão "Save As" na interface
-button = Button(root, text="Salvar", command=saveas)
+button = Button(root, text=labels.SAVEAS_LABEL, command=saveas)
 button.grid()
 
 # executando editor

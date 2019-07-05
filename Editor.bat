@@ -1,1 +1,1 @@
-python editor.py
+python ./source/setup.py
