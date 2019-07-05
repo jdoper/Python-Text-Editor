@@ -1,22 +1,11 @@
-import tkinter.filedialog as fileDialog
 import labels
+import helpers
 from tkinter import *
 
 # configurando editor
 root = Tk(labels.APP_NAME)
 text = Text(root)
 text.grid()
-
-# ação para salvar texto inserido
-def saveas():
-    # recuperando texto inserido
-    text_editor = text.get("1.0", "end-1c")
-    savelocation = fileDialog.asksaveasfilename()
-
-    # recuperando localização inserida e salvando arquivo
-    file1 = open(savelocation, "w+")
-    file1.write(text_editor)
-    file1.close()
 
 # ação para alterar fonte do editor
 def fontCourier():
@@ -39,7 +28,8 @@ font.menu.add_checkbutton(label="Courier", variable=courier, command=fontCourier
 font.menu.add_checkbutton(label="Helvetica", variable=helvetica, command=fontHelvetica)
 
 # adicionando botão "Save As" na interface
-button = Button(root, text=labels.SAVEAS_LABEL, command=saveas)
+command_save = helpers.DocumentSaveAs(text)
+button = Button(root, text=labels.SAVEAS_LABEL, command=command_save.save)
 button.grid()
 
 # executando editor
